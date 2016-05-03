@@ -88,14 +88,49 @@ and open the template in the editor.
         </h:form>
         <br/>
         <div class="error">
-            Sorry! Your donation was unsuccessful
-            <h5>Please try again later</h5>
+            Thank You, Your donation was successful!!
         </div>
+        <br/> 
+        <div class = "center"> 
+            <a href="./homepage.xhtml">
+                <image src="./resources/images/homepage-button.png" />
+            </a>
+
             <br/> 
-            <div class = "center"> 
-                <a href="./homepage.xhtml">
-                    <image src="./resources/images/homepage-button.png" />
-                </a>
+            <br/>
+            <!--</h:form>-->
+            <div class ="center">
+                <div id="fb-root"></div>
+                <script type="text/javascript" style="panelGridCenter">
+                    //Facebook script
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id))
+                            return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                    //Twitter button
+                    (function () {
+                        document.write('<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-text="I just donated to FMSC, check out their pixel application!" data-hashtags="OneMillionMeals" data-via="fmsc_org">Tweet</a>');
+                        var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = 'http://platform.twitter.com/widgets.js';
+                        s1.parentNode.insertBefore(s, s1);
+                    })();
+                </script><!-- Google+ Script-->
+                <script async='async' src="https://apis.google.com/js/platform.js"></script>
+                <!-- Linked In button-->
+                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                <script type="IN/Share" data-url="https://www.linkedin.com/company/feed-my-starving-children"></script>
+                <!-- Facebook button-->
+                <div class="fb-share-button" data-href="https://www.facebook.com/feedmystarvingchildren" data-layout="button" data-mobile-iframe="true"></div>
+                <!-- Google+ button-->
+                <div class="g-plus" data-action="share" data-href="https://plus.google.com/+feedmystarvingchildren"></div>
             </div>
+        </div>
     </body>
 </html>

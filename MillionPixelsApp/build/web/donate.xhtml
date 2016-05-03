@@ -8,6 +8,7 @@
     <h:head>
         <title>Donate to FMSC!</title>
     </h:head>
+    <f:event listener="#{userController.checklogin}" type="preRenderView" />
     <h:body>
         <link rel="stylesheet" type="text/css" href="./resources/css/style.css"></link>
         <h:form>

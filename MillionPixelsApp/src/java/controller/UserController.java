@@ -8,11 +8,13 @@ package controller;
 import dao.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import model.ChangeImage;
 import model.Donation;
 import model.LoginBean;
@@ -227,5 +229,18 @@ public class UserController {
          return temp;
         
         
+    }
+    
+        public String checklogin(ComponentSystemEvent event) {
+        String navi = null;
+
+        if (!isLoggedin()){
+
+            FacesContext fc = FacesContext.getCurrentInstance();
+            ConfigurableNavigationHandler nav = (ConfigurableNavigationHandler) fc.getApplication().getNavigationHandler();
+            nav.performNavigation("mustLogin.xhtml?faces-redirect=true");
+        }
+
+        return navi;
     }
 }

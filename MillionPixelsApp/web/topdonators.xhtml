@@ -24,8 +24,6 @@ and open the template in the editor.
                 <p:menuitem value="About Us" url="aboutus.xhtml" />
                 <p:menuitem value="Top Donations" url="topdonators.xhtml"/>
                 <p:submenu label="#{userController.uid}"  style="float:right" rendered="#{userController.isLoggedin()}">
-                        <p:menuitem value="Donate" />
-                        <p:menuitem value="Edit Profile" />
                         <p:menuitem value="Logout" action="#{userController.logout()}" rendered="#{userController.isLoggedin()}"/>
                     </p:submenu>
                 <p:menuitem value ="Donate" url="donate.xhtml"/>

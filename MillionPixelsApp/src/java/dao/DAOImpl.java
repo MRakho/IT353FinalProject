@@ -139,8 +139,9 @@ public class DAOImpl implements DAO {
             Statement stmt = DBConn.createStatement();
             ResultSet rs = stmt.executeQuery(queryString);
             List<Donation> lod=new ArrayList<Donation>();
-            while(rs.next()){
-                lod.add(new Donation(rs.getString("uid"), rs.getString("displayname"), rs.getString("usstates"), rs.getInt("pixelsbought")));
+            for(int i=0;i<15;i++){
+                if(rs.next())
+                    lod.add(new Donation(rs.getString("uid"), rs.getString("displayname"), rs.getString("usstates"), rs.getInt("pixelsbought")));
             }
             DBConn.close();
             return lod;

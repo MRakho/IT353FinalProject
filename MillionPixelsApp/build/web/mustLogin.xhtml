@@ -10,21 +10,33 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <head>
-        <title>TODO supply a title</title>
+    <h:head>
+        <title>About Us</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+    </h:head>
     <body>
         <link rel="stylesheet" type="text/css" href="./resources/css/style.css"></link>
         <h:form>
-            Hello <h:outputText id="fname" escape="false" value="#{signUpController.model.getFname()} "/> <h:outputText id="lname" escape="false" value="#{signUpController.model.getLname()}"/>
-            <br/><br/>
-            <h:outputText id="msg" escape="false" value="Your account has been successfully registered on our website. Check for your account details below"/><br/><hr/>
-            Username: <h:outputText id="uid" escape="false" value="#{signUpController.model.getUid()}"/><br/>
-            Password: <h:outputText id="pass" escape="false" value="#{signUpController.model.getPass()}"/><br/>
-            Email: <h:outputText id="email" escape="false" value="#{signUpController.model.getEmail()}"/><br/>
+            <p:growl id="messages"/>
+            <p:menubar>
+                <p:menuitem value ="Home" url ="homepage.xhtml"/>
+                <p:menuitem value="FMSC Website" url="https://www.fmsc.org/" />
+                <p:menuitem value="About Us" url="aboutus.xhtml" />
+                <p:menuitem value="Top Donations" url="topdonators.xhtml"/>
+                <p:submenu label="#{userController.uid}"  style="float:right" rendered="#{userController.isLoggedin()}">
+                    <p:menuitem value="Logout" action="#{userController.logout()}" rendered="#{userController.isLoggedin()}"/>
+                </p:submenu>
+                <p:menuitem value ="Donate" url="donate.xhtml"/>
+                <f:facet name="options">
+                    <p:commandButton value="Sign Up" onclick="PF('dlg').show();" rendered="#{!userController.isLoggedin()}"/>
+                    <p:commandButton value="Sign In" onclick="PF('dlg2').show();" rendered="#{!userController.isLoggedin()}"/>
+
+
+                </f:facet>
+
+
+            </p:menubar>
         </h:form>
-        <h:form><h:commandButton id="back" value="Back to Homepage" action="homepage.xhtml?faces-redirect=true"/></h:form>
         <h:form>
             <p:dialog header="Sign Up" widgetVar="dlg" modal="true" resizable="false">
             <h:panelGrid columns="2" id="matchGrid" cellpadding="5">  
@@ -57,7 +69,7 @@ and open the template in the editor.
             </p:dialog>
         
         </h:form>
-            
+        
         <h:form>
             <p:dialog header="Sign In" widgetVar="dlg2" modal="true" resizable="false">
             <h:panelGrid columns="2" id="signingrid" cellpadding="5">  
@@ -74,5 +86,20 @@ and open the template in the editor.
             </p:dialog>
             
         </h:form>
+        <br/>
+        <div class="error">
+            Sorry, You Must be logged in to donate. 
+            
+        </div>
+        <br/> 
+        <div class = "center"> 
+            <a href="./homepage.xhtml">
+                <image src="./resources/images/homepage-button.png" />
+            </a>
+
+            <br/> 
+            <br/>
+            <!--</h:form>-->
+        </div>
     </body>
 </html>

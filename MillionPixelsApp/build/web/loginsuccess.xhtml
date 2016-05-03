@@ -24,8 +24,6 @@ and open the template in the editor.
                 <p:menuitem value="About Us" url="aboutus.xhtml" />
                 <p:menuitem value="Top Donations" url="topdonators.xhtml"/>
                 <p:submenu label="#{userController.uid}"  style="float:right" rendered="#{userController.isLoggedin()}">
-                    <p:menuitem value="Donate" />
-                    <p:menuitem value="Edit Profile" />
                     <p:menuitem value="Logout" action="#{userController.logout()}" rendered="#{userController.isLoggedin()}"/>
                 </p:submenu>
                 <p:menuitem value ="Donate" url="donate.xhtml"/>
@@ -38,6 +36,55 @@ and open the template in the editor.
 
 
             </p:menubar>
+        </h:form>
+        <h:form>
+            <p:dialog header="Sign Up" widgetVar="dlg" modal="true" resizable="false">
+            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">  
+                <h:outputLabel for="uid" value="Username:" /> 
+                <p:inputText id="uid" required="true" value="#{signUpController.model.uid}">	
+                </p:inputText> 
+                
+                <h:outputLabel for="fname" value="First Name:" /> 
+                <p:inputText id="fname" required="true" value="#{signUpController.model.fname}">	
+                </p:inputText>
+            
+                <h:outputLabel for="lname" value="Last Name:" /> 
+                <p:inputText id="lname" required="true" value="#{signUpController.model.lname}">	
+                </p:inputText>
+                
+                <h:outputLabel for="email" value="Email:" /> 
+                <p:inputText id="email" required="true" value="#{signUpController.model.email}">
+                </p:inputText>
+                             
+                <h:outputLabel for="pwd1" value="Password:" />
+                <p:password id="pwd1" value="#{signUpController.model.pass}" match="pwd2" label="Password 1" required="true" />
+ 
+                <h:outputLabel for="pwd2" value="Confirm Password:" />
+                <p:password id="pwd2" value="#{signUpController.model.pass}" label="Password 2" required="true" />
+            
+                
+                <p:commandButton id="sub" update="matchGrid" value="Sign Up" action="#{signUpController.createProfile()}"> </p:commandButton>
+            </h:panelGrid>
+            <p:messages id="messages" showDetail="true" autoUpdate="true" />
+            </p:dialog>
+        
+        </h:form>
+        
+        <h:form>
+            <p:dialog header="Sign In" widgetVar="dlg2" modal="true" resizable="false">
+            <h:panelGrid columns="2" id="signingrid" cellpadding="5">  
+                <h:outputLabel for="signinuid" value="Username:" /> 
+                <p:inputText id="signinuid" value="#{userController.lb.uid}" required="true">	
+                </p:inputText> 
+                
+                <h:outputLabel for="signinpwd" value="Password:" />
+                <p:password id="signinpwd" value="#{userController.lb.password}" label="Password 3" required="true" />
+ 
+                <p:commandButton id="sub2" update="signingrid" value="Sign In" action="#{userController.login()}"> </p:commandButton>
+            </h:panelGrid>
+            <p:messages id="messages2" showDetail="true" autoUpdate="true" />
+            </p:dialog>
+            
         </h:form>
         <br/>
             <h1> Account creation successful! </h1>

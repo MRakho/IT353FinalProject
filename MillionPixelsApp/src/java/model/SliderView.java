@@ -7,6 +7,10 @@ package model;
  
 import controller.UserController;
 import dao.DAOImpl;
+import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +18,16 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
  
 import org.primefaces.event.SlideEndEvent;
  
@@ -34,10 +48,54 @@ public class SliderView
     @ManagedProperty(value="#{dropdownView}")
     private DropdownView dv;
 
+    public void sendMail(){
+        String to=uc.getEmail();
+        String from="jmsalvador2395@gmail.com";
+        String usr="jmsalvador2395@gmail.com";
+        String pass="jmsalvador2319@yahoo.com";
+        String host="smtp.gmail.com";
+        Properties properties=new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "587");
+        Session session = Session.getInstance(properties,
+        new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(usr, pass);
+            }
+        });
+        
+        try{
+            MimeMessage message=new MimeMessage(session);
+            MimeMultipart mp=new MimeMultipart();
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject("Thank You For Your Donation To The Feed My Starving Children Organization");
+            message.setText("Thank You " + uc.getFname()+", \nWe greatly appreciate you donating "+ number3 +" meals to our non-profit organization. Your contribution will be used for the greater good!! \n\nThank You, \nFeed My Starving Children Organization");
+            BodyPart bp=new MimeBodyPart();
+            String htmlText="<img src=\"cid:image\">";
+            bp.setContent(htmlText, "text/html");
+            mp.addBodyPart(bp);
+            
+            bp=new MimeBodyPart();
+            DataSource fds=new FileDataSource("image.png");
+            bp.setDataHandler(new DataHandler(fds));
+            bp.setHeader("Content-ID", "<image>");
+            //message.setContent(mp);
+            Transport.send(message);
+            
+        }
+        catch (MessagingException mex){
+        }
+    }
     public String donate(){
         DAOImpl d=new DAOImpl();
         if(d.donate(number3, message, getUc().getUid(), dv.getState())==1)
+        {
+            sendMail();
             return "https://www.sandbox.paypal.com/cgi-bin/webscr";
+        }
         return "donationerror.xhtml";
     }
     public String getState() {
