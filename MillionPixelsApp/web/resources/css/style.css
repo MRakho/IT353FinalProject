@@ -1,0 +1,60 @@
+p {
+   font-weight:bold;
+   background-color: yellow;
+ }
+ body {
+    background-color: lightblue;
+}
+div {
+    background-color: lightblue;
+}
+centered{
+    margin: 0px;
+}
+.twitter-share-button[style] { 
+vertical-align: text-bottom !important; 
+}
+.facebook-share-button[style] { 
+vertical-align: text-bottom !important; 
+}
+.g-plus[style]{
+vertical-align: text-bottom !important; 
+}
+.panelGridCenter {
+    margin: 0 auto;
+}
+h1{
+    font-size: 50px;
+    font-family: "Arial";
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em darkblue;
+    
+}
+.center{
+    margin: auto;
+    text-align:center;
+    padding: 10px;
+    vertical-align: bottom;
+}
+.center2{    
+    text-align:center;
+    width: 13%;   
+}
+
+h2{
+    font-size: 30px;
+    font-family: "Arial";
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em darkblue;
+    
+}
+
+.error{
+    font-size: 40px;
+    font-family: "Times New Roman";
+    text-align:center;
+    padding: 10px;
+    vertical-align: bottom;    
+}
