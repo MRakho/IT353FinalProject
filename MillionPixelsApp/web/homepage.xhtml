@@ -39,7 +39,7 @@ and open the template in the editor.
             </p:menubar>
         </h:form>
         <h:form>
-            <p:dialog header="Sign Up" widgetVar="dlg" modal="true" resizable="false">
+            <p:dialog header="Sign Up" widgetVar="dlg" modal="true" resizable="false" draggable="false">
             <h:panelGrid columns="2" id="matchGrid" cellpadding="5">  
                 <h:outputLabel for="uid" value="Username:" /> 
                 <p:inputText id="uid" required="true" value="#{signUpController.model.uid}">	
@@ -72,7 +72,7 @@ and open the template in the editor.
         </h:form>
         
         <h:form>
-            <p:dialog header="Sign In" widgetVar="dlg2" modal="true" resizable="false">
+            <p:dialog header="Sign In" widgetVar="dlg2" modal="true" resizable="false" draggable="false">
             <h:panelGrid columns="2" id="signingrid" cellpadding="5">  
                 <h:outputLabel for="signinuid" value="Username:" /> 
                 <p:inputText id="signinuid" value="#{userController.lb.uid}" required="true">	
@@ -93,7 +93,7 @@ and open the template in the editor.
            <h:panelGrid columns="1" styleClass="panelGridCenter">
                <img src="./resources/images/pic2.png" onmouseover="addElement()" width="1000" height ="1000" alt="map" usemap="#hungryMap"/>
                <!--<h:graphicImage style="text-align:center" value="./resources/images/pic2.png"  />-->
-                <h:outputText value="Total number of meals bought upto today are #{userController.pixelsbought} . Feed a child today for just 22 cents and discover the image above with your commuity."> </h:outputText>
+                <h:outputText value="Total number of meals bought up to today are #{userController.pixelsbought}! Feed a child today for only 22 cents and discover the image above with your community!"> </h:outputText>
                 <br/>
            </h:panelGrid>
 
