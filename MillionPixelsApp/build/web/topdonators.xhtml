@@ -56,7 +56,7 @@ and open the template in the editor.
             </p:column>
         </p:dataTable>
         <h:form>
-            <p:dialog header="Sign Up" widgetVar="dlg" modal="true" resizable="false">
+            <p:dialog header="Sign Up" widgetVar="dlg" modal="true" resizable="false" draggable="false">
             <h:panelGrid columns="2" id="matchGrid" cellpadding="5">  
                 <h:outputLabel for="uid" value="Username:" /> 
                 <p:inputText id="uid" required="true" value="#{signUpController.model.uid}">	
@@ -89,7 +89,7 @@ and open the template in the editor.
         </h:form>
             
         <h:form>
-            <p:dialog header="Sign In" widgetVar="dlg2" modal="true" resizable="false">
+            <p:dialog header="Sign In" widgetVar="dlg2" modal="true" resizable="false" draggable="false">
             <h:panelGrid columns="2" id="signingrid" cellpadding="5">  
                 <h:outputLabel for="signinuid" value="Username:" /> 
                 <p:inputText id="signinuid" value="#{userController.lb.uid}" required="true">	

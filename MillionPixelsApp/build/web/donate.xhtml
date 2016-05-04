@@ -19,8 +19,6 @@
                 <p:menuitem value="About Us" url="aboutus.xhtml" />
                 <p:menuitem value="Top Donations" url="topdonators.xhtml"/>
                 <p:submenu label="#{userController.uid}"  style="float:right" rendered="#{userController.isLoggedin()}">
-                        <p:menuitem value="Donate" />
-                        <p:menuitem value="Edit Profile" />
                         <p:menuitem value="Logout" action="#{userController.logout()}" rendered="#{userController.isLoggedin()}"/>
                     </p:submenu>
                 <p:menuitem value ="Donate" url="donate.xhtml"/>
@@ -67,10 +65,15 @@
                         <input type="hidden" name="cn" value="Add special instructions to the seller:"></input>
                         <input type="hidden" name="no_shipping" value="1"></input>
                         <input type="hidden" name="currency_code" value="USD"></input>
+                        <input type="hidden" name="return" value="http://gfish2.it.ilstu.edu/mrrakho_Sp2016_MillionPixelsApp/faces/donationSuccess.xhtml"></input>
+                            <input type="hidden" name="cancel_return" value="http://gfish2.it.ilstu.edu/mrrakho_Sp2016_MillionPixelsApp/faces/homepage.xhtml"></input>
                         <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted"></input>
                         <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></input>
                         <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"></img>
                     </form>
+                    
+                 
+
                 </h:panelGrid>
             </p:dialog>
         </h:form>
